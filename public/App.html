@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hava Durumu</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("./autumn.jpg"); /* Arka plan görseli */
+        background-size: cover; /* Görselin tam olarak kapsamasını sağlar */
+        background-position: center; /* Görseli ortalar */
+        background-repeat: no-repeat; /* Görselin tekrar etmemesini sağlar */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        margin: 0;
+        padding-top: 200px;
+        color: white; /* Yazı rengini beyaz yapar */
+      }
+
+      .wrapper {
+        text-align: center;
+      }
+      .input-section {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        width: 300px;
+        margin: 0 auto 20px auto;
+      }
+      .input-box {
+        flex: 2;
+        margin-right: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        background-color: white;
+        color: black;
+      }
+      button {
+        flex: 1;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .container {
+        border: 2px solid black;
+        border-radius: 8px;
+        padding: 20px;
+        width: 300px;
+        margin: 0 auto;
+        background-color: gray;
+        color: white;
+      }
+      .city-name {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .weather-details {
+        font-size: 14px;
+        color: #ddd;
+      }
+
+      /* Dijital Saat */
+      .digital-clock-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-family: "Courier New", monospace;
+        color: white;
+        font-size: 30px;
+        background-color: #333;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="input-section">
+        <div class="input-box">
+          <input type="text" id="cityInput" placeholder="Şehir adı" />
+        </div>
+        <button onclick="getWeather()">Getir</button>
+      </div>
+
+      <div class="container">
+        <div class="city-name" id="cityName">Şehir adı</div>
+        <div class="weather-details" id="weatherDetails">
+          Hava durumu bilgisi
+        </div>
+      </div>
+    </div>
+
+    <!-- Dijital Saat -->
+    <div class="digital-clock-container">
+      <div class="digital-clock" id="digitalClock"></div>
+    </div>
+
+    <script>
+      const url = "https://api.openweathermap.org/data/2.5/weather";
+      const key = "feadfc7ceff6fee37d2d342f2109778a";
+
+      function getWeather() {
+        const city = document.getElementById("cityInput").value;
+
+        if (city) {
+          const fullUrl = `${url}?q=${city}&appid=${key}&units=metric&lang=tr`;
+
+          fetch(fullUrl)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.cod === 200) {
+                const cityName = data.name;
+                const temperature = Math.round(data.main.temp) + "°C";
+                const description =
+                  data.weather[0].description.charAt(0).toUpperCase() +
+                  data.weather[0].description.slice(1);
+
+                document.getElementById("cityName").innerText = cityName;
+                document.getElementById(
+                  "weatherDetails"
+                ).innerText = `${temperature}, ${description}`;
+              } else {
+                alert(`Hata: ${data.message}`);
+              }
+            })
+            .catch((error) => {
+              alert("Bir hata oluştu! Hava durumu verileri alınamadı.");
+              console.error(error);
+            });
+        } else {
+          alert("Lütfen bir şehir ismi girin!");
+        }
+      }
+
+      // Dijital Saat
+      function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+
+        const timeString = `${hours}:${minutes}:${seconds}`;
+
+        document.getElementById("digitalClock").innerText = timeString;
+      }
+
+      // Saati her saniye güncelle
+      setInterval(updateClock, 1000);
+
+      // Sayfa yüklendiğinde hemen başlat
+      updateClock();
+    </script>
+  </body>
+</html>
