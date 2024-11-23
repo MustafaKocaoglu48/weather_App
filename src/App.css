@@ -1,59 +1,12 @@
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #282c34;
+  color: white;
 }
 
-.login-form {
-  background-color: #3c3f47; /* Arka plan rengini biraz daha açık yaptık */
-  padding: 30px; /* Daha fazla boşluk ekledik */
-  border-radius: 10px; /* Kenarları daha yuvarlak hale getirdik */
-  color: #fff;
-  width: 320px; /* Genişliği biraz artırdık */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Hafif gölge ekledik */
-}
-
-.login-form h2 {
-  margin-bottom: 20px; /* Başlık altında daha fazla boşluk */
-  text-align: center;
-}
-
-.login-form form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Form öğeleri arasındaki boşluğu artırdık */
-}
-
-.login-form label {
-  margin-bottom: 10px; /* Label ile input arasında daha fazla boşluk */
-}
-
-.login-form input {
-  padding: 12px; /* Girdi kutularının iç boşluğunu artırdık */
-  border: none;
-  border-radius: 6px; /* Kenarları daha yuvarlak */
-  background-color: #444851; /* Girdi kutuları için arka plan rengi */
-  color: #fff; /* Yazı rengini beyaz yaptık */
-  outline: none; /* Odaklandığında dış kenarlığı kaldırdık */
-}
-
-.login-form input::placeholder {
-  color: #b0b3ba; /* Placeholder yazı rengini yumuşattık */
-}
-
-.login-form button {
-  padding: 12px; /* Düğme iç boşluğunu artırdık */
-  background-color: #61dafb;
-  border: none;
-  color: #333;
-  cursor: pointer;
-  border-radius: 6px; /* Düğme kenarlarını daha yuvarlak yaptık */
-  font-weight: bold;
-  transition: background-color 0.3s ease; /* Geçiş efekti ekledik */
-}
-
-.login-form button:hover {
-  background-color: #21a1f1; /* Düğme üzerine gelindiğinde daha belirgin */
+a {
+  color: #61dafb;
+  text-decoration: none;
 }
