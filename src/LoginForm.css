@@ -1,54 +1,13 @@
+/* Login form stil */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .login-form {
-  width: 100%;
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
-  background: #3c3f47;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: white;
-  font-family: Arial, sans-serif;
+  @apply w-full max-w-[400px] mx-auto mt-[100px] p-5 bg-[#3c3f47] rounded-lg shadow-lg text-white text-center font-sans;
 }
 
-/* Başlık stili */
-h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.form-group label {
-  font-size: 14px;
-  width: 100px;
-  text-align: right;
-  color: #ddd;
-}
-
-.form-group input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background-color: #fff;
-  color: #333;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #5d78ff;
-}
-
-/* Hata mesajları */
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+input[type="text"],
+input[type="password"] {
+  @apply p-2 rounded-md border border-gray-300 text-sm bg-white text-gray-800 focus:outline-none focus:border-blue-500;
 }

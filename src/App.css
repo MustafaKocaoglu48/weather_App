@@ -1,12 +1,25 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #282c34;
-  color: white;
+/* App ana stil bileşenleri */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h2 {
+  @apply mb-5 text-2xl;
 }
 
-a {
-  color: #61dafb;
-  text-decoration: none;
+/* Form stili */
+.form-group {
+  @apply mb-4 flex items-center gap-2;
+}
+
+.form-group label {
+  @apply text-sm w-[100px] text-gray-400;
+}
+
+.form-group input {
+  @apply flex-1 p-2 rounded-md border border-gray-300 text-sm bg-white text-gray-800 focus:outline-none focus:border-blue-500;
+}
+
+.error {
+  @apply text-red-500 text-xs mt-1;
 }
