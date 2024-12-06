@@ -4,6 +4,14 @@ import "./WeatherApp.css";
 const WeatherApp = () => {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const fetchWeather = () => {
     if (!city) {
@@ -27,17 +35,9 @@ const WeatherApp = () => {
       .catch(() => alert("Bir hata oluştu!"));
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString();
-      document.getElementById("digitalClock").innerText = timeString;
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="weather-app">
+      {/* Şehir Adı ve Buton */}
       <div className="input-section">
         <input
           type="text"
@@ -47,16 +47,18 @@ const WeatherApp = () => {
         />
         <button onClick={fetchWeather}>Getir</button>
       </div>
-      <div className="weather-info">
-        {weather && (
-          <div>
-            <h3>{weather.city}</h3>
-            <p>{weather.temperature}</p>
-            <p>{weather.description}</p>
-          </div>
-        )}
+      {/* Hava Durumu Bilgisi */}
+      {weather && (
+        <div className="weather-info">
+          <h3>{weather.city}</h3>
+          <p>{weather.temperature}</p>
+          <p>{weather.description}</p>
+        </div>
+      )}
+      {/* Saat */}
+      <div id="digitalClock" className="digital-clock">
+        {currentTime}
       </div>
-      <div id="digitalClock" className="digital-clock"></div>
     </div>
   );
 };
