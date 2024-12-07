@@ -8,6 +8,7 @@
 }
 
 .input-section {
+<<<<<<< HEAD
   @apply mb-5 flex justify-center gap-1;
 }
 
@@ -21,4 +22,27 @@ button {
 
 .digital-clock {
   @apply fixed top-5 right-5 text-white bg-black bg-opacity-60 px-5 py-2 rounded-lg shadow-lg text-lg;
+=======
+  @apply mb-5 flex justify-center gap-2;
+}
+
+.input-section input {
+  @apply p-2 text-base border border-gray-300 rounded h-10 box-border;
+}
+
+button {
+  @apply bg-blue-600 border-none rounded text-white text-base cursor-pointer px-5 h-10 mt-0 transition ease-in-out duration-300;
+}
+
+button:hover {
+  @apply bg-blue-500;
+}
+
+button:focus {
+  @apply outline-none;
+}
+
+.digital-clock {
+  @apply fixed top-5 right-5 text-lg text-white bg-black bg-opacity-60 p-2 rounded-lg shadow-md;
+>>>>>>> feature/fix-errors
 }
