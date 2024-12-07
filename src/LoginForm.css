@@ -1,17 +1,4 @@
-/* Login form stil */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .login-form {
-<<<<<<< HEAD
-  @apply w-full max-w-[400px] mx-auto mt-[100px] p-5 bg-[#3c3f47] rounded-lg shadow-lg text-white text-center font-sans;
-}
-
-input[type="text"],
-input[type="password"] {
-  @apply p-2 rounded-md border border-gray-300 text-sm bg-white text-gray-800 focus:outline-none focus:border-blue-500;
-=======
   @apply bg-gray-800 max-w-md w-full mx-auto mt-24 p-5 rounded-lg shadow-md text-center text-white font-sans;
 }
 
@@ -36,5 +23,4 @@ input[type="password"] {
 /* Hata mesajları */
 .error {
   @apply text-red-500 text-xs mt-1;
->>>>>>> feature/fix-errors
 }
